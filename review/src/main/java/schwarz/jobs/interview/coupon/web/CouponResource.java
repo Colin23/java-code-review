@@ -38,13 +38,13 @@ public class CouponResource {
     //@ApiOperation(value = "Applies currently active promotions and coupons from the request to the requested Basket - Version 1")
     @PostMapping(value = "/apply")
     public ResponseEntity<Basket> apply(
-        //@ApiParam(value = "Provides the necessary basket and customer information required for the coupon application", required = true)
-        @RequestBody @Valid final ApplicationRequestDTO applicationRequestDTO) {
+            //@ApiParam(value = "Provides the necessary basket and customer information required for the coupon application", required = true)
+            @RequestBody @Valid final ApplicationRequestDTO applicationRequestDTO) {
 
         log.info("Applying coupon");
 
         final Optional<Basket> basket =
-            couponService.apply(applicationRequestDTO.getBasket(), applicationRequestDTO.getCode());
+                couponService.apply(applicationRequestDTO.getBasket(), applicationRequestDTO.getCode());
 
         if (basket.isEmpty()) {
             return ResponseEntity.notFound().build();
